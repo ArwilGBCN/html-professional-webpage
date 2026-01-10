@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+ <nav>
+  <div class="container navbar">
+    <a href="index.html" class="logo">My Portfolio</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="certifications.html">Certification</a>
+      <a href="activities.html">Activities</a>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Recent Projects</h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <img src="gradecalculator.png" class="project-img" />
+          <div class="project-content">
+            <h3 class="project-title">GradeCalculator</h3>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="FileBackupSystem.PNG" class="project-img" />
+          <div class="project-content">
+            <h3 class="project-title">File Backup System</h3>
+          </div>
+        </div>
+
+       
+  </section>
+
+  <!-- Snake Game -->
+  <section id="game">
+    <div class="container">
+      <h2 class="section-title">Play Snake Game</h2>
+
+      <p>Score: <span id="score">0</span></p>
+      <canvas id="gameCanvas" width="400" height="400"></canvas>
+      <button id="restartBtn" class="btn">Play Again</button>
+    </div>
+  </section>
+
+  <script src="assets/js/snake.js"></script>
+
+</body>
+</html>
