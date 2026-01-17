@@ -3,31 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <title>Portfolio | Arwil Gabriel</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Portfolio Custom Blending Styles */
+    .fun-showcase {
+      padding: 80px 20px;
+      background-color: #0f172a; 
+      font-family: 'Inter', sans-serif;
+      color: #f8fafc;
+      border-top: 1px solid #1e293b;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card-box {
+      flex: 1;
+      min-width: 320px;
+      max-width: 500px;
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .card-box h3 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+    }
+
+    .snake-wrap {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 10px;
+      display: inline-block;
+      border: 2px solid #334155;
+    }
+
+    #gameCanvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      background-color: #9bbc0f;
+    }
+
+    #fireworks-container {
+      width: 100%;
+      height: 350px;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid #334155;
+    }
+
+    .control-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 160px;
+      margin: 20px auto 0;
+    }
+
+    .dir-btn {
+      background: #334155;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .dir-btn:hover { background: #38bdf8; color: #0f172a; }
+    
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body id="top">
 
-  <!-- Navigation -->
   <nav>
-  <div class="container navbar">
-    <a href="index.html" class="logo">My Portfolio</a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="certifications.html">Certification</a>
-      <a href="activities.html">Activities</a>
+    <div class="container navbar">
+      <a href="index.html" class="logo">My Portfolio</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="certifications.html">Certification</a>
+        <a href="activities.html">Activities</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-
-  <!-- Hero Section -->
   <section class="hero">
     <div class="container hero-content">
       <img src="me.png" alt="Arwil Gabriel A. Gabucan" class="profile-img" />
@@ -38,6 +130,206 @@
       </div>
     </div>
   </section>
-<script src="snake.js"></script>
+
+  <section class="fun-showcase">
+    <div class="flex-container">
+      
+      <div class="card-box">
+        <h3>Terminal Snake</h3>
+        <div class="snake-wrap">
+          <div style="margin-bottom: 10px; font-size: 0.9rem; color: #94a3b8;">
+            Score: <span id="score" style="color: #38bdf8; font-weight: bold;">0</span>
+          </div>
+          <div style="position: relative;">
+            <canvas id="gameCanvas" width="300" height="300"></canvas>
+            <div id="gameOverScreen" style="position: absolute; display: none; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); flex-direction: column; justify-content: center; align-items: center;">
+              <p style="color: #ef4444; font-weight: bold; font-size: 1.2rem;">GAME OVER</p>
+              <button onclick="restartGame()" style="margin-top: 10px; background: #38bdf8; color: #0f172a; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; cursor: pointer;">RETRY</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="control-grid">
+          <div></div><button class="dir-btn" id="btnUp">▲</button><div></div>
+          <button class="dir-btn" id="btnLeft">◄</button>
+          <button class="dir-btn" id="btnDown">▼</button>
+          <button class="dir-btn" id="btnRight">►</button>
+        </div>
+      </div>
+
+      <div class="card-box">
+        <h3>Visual Atmosphere</h3>
+        <div id="fireworks-container">
+          <canvas id="fireworksCanvas"></canvas>
+        </div>
+        <p style="margin-top: 20px; color: #94a3b8; font-size: 0.85rem; line-height: 1.5;">
+          A real-time canvas experiment using particle physics and HSL color cycles.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    /* --- SNAKE GAME LOGIC --- */
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreElement = document.getElementById('score');
+    const gameOverScreen = document.getElementById('gameOverScreen');
+
+    const TILE_SIZE = 15; // Adjusted for 300px canvas
+    const GRID_SIZE = 20; 
+    const GAME_SPEED = 100;
+
+    let snake = [];
+    let food = {};
+    let direction = 'RIGHT';
+    let nextDirection = 'RIGHT';
+    let running = false;
+    let gameLoop = null;
+    let score = 0;
+
+    function initSnake() {
+        document.getElementById('btnUp').onclick = () => { if(direction !== 'DOWN') nextDirection = 'UP'; };
+        document.getElementById('btnDown').onclick = () => { if(direction !== 'UP') nextDirection = 'DOWN'; };
+        document.getElementById('btnLeft').onclick = () => { if(direction !== 'RIGHT') nextDirection = 'LEFT'; };
+        document.getElementById('btnRight').onclick = () => { if(direction !== 'LEFT') nextDirection = 'RIGHT'; };
+        startSnake();
+    }
+
+    function startSnake() {
+        snake = [{x: 10, y: 10}, {x: 9, y: 10}, {x: 8, y: 10}];
+        direction = 'RIGHT';
+        nextDirection = 'RIGHT';
+        score = 0;
+        scoreElement.textContent = score;
+        gameOverScreen.style.display = 'none';
+        spawnFood();
+        running = true;
+        if(gameLoop) clearInterval(gameLoop);
+        gameLoop = setInterval(updateSnake, GAME_SPEED);
+    }
+
+    function spawnFood() {
+        food = {
+            x: Math.floor(Math.random() * GRID_SIZE),
+            y: Math.floor(Math.random() * GRID_SIZE)
+        };
+    }
+
+    function updateSnake() {
+        if(!running) return;
+        direction = nextDirection;
+        const head = { ...snake[0] };
+
+        if(direction === 'UP') head.y--;
+        if(direction === 'DOWN') head.y++;
+        if(direction === 'LEFT') head.x--;
+        if(direction === 'RIGHT') head.x++;
+
+        if(head.x < 0 || head.x >= GRID_SIZE || head.y < 0 || head.y >= GRID_SIZE || snake.some(s => s.x === head.x && s.y === head.y)) {
+            running = false;
+            gameOverScreen.style.display = 'flex';
+            return;
+        }
+
+        snake.unshift(head);
+        if(head.x === food.x && head.y === food.y) {
+            score += 10;
+            scoreElement.textContent = score;
+            spawnFood();
+        } else {
+            snake.pop();
+        }
+        drawSnake();
+    }
+
+    function drawSnake() {
+        ctx.fillStyle = '#9bbc0f';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0f380f';
+        ctx.fillRect(food.x * TILE_SIZE, food.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        snake.forEach((s, i) => {
+            ctx.fillStyle = i === 0 ? '#0f380f' : '#306230';
+            ctx.fillRect(s.x * TILE_SIZE, s.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        });
+    }
+
+    function restartGame() { startSnake(); }
+
+    /* --- FIREWORKS LOGIC --- */
+    const fwCanvas = document.getElementById('fireworksCanvas');
+    const fwCtx = fwCanvas.getContext('2d');
+    const fwContainer = document.getElementById('fireworks-container');
+
+    function resizeFw() {
+        fwCanvas.width = fwContainer.offsetWidth;
+        fwCanvas.height = fwContainer.offsetHeight;
+    }
+    window.addEventListener('resize', resizeFw);
+    resizeFw();
+
+    class Particle {
+        constructor(x, y, color) {
+            this.x = x; this.y = y; this.color = color;
+            this.velocity = { x: (Math.random() - 0.5) * 6, y: (Math.random() - 0.5) * 6 };
+            this.alpha = 1;
+            this.decay = Math.random() * 0.015 + 0.01;
+        }
+        draw() {
+            fwCtx.save(); fwCtx.globalAlpha = this.alpha;
+            fwCtx.fillStyle = this.color;
+            fwCtx.beginPath(); fwCtx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+            fwCtx.fill(); fwCtx.restore();
+        }
+        update() { this.x += this.velocity.x; this.y += this.velocity.y; this.alpha -= this.decay; }
+    }
+
+    class Firework {
+        constructor() {
+            this.x = Math.random() * fwCanvas.width;
+            this.y = fwCanvas.height;
+            this.targetY = Math.random() * (fwCanvas.height * 0.6);
+            this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+            this.exploded = false;
+            this.particles = [];
+        }
+        draw() {
+            if(!this.exploded) {
+                fwCtx.fillStyle = this.color;
+                fwCtx.beginPath(); fwCtx.arc(this.x, this.y, 3, 0, Math.PI * 2); fwCtx.fill();
+            } else {
+                this.particles.forEach(p => p.draw());
+            }
+        }
+        update() {
+            if(!this.exploded) {
+                this.y -= 4;
+                if(this.y <= this.targetY) {
+                    this.exploded = true;
+                    for(let i=0; i<40; i++) this.particles.push(new Particle(this.x, this.y, this.color));
+                }
+            } else {
+                this.particles.forEach((p, i) => { p.update(); if(p.alpha <= 0) this.particles.splice(i, 1); });
+            }
+        }
+    }
+
+    let fireworks = [];
+    function animate() {
+        fwCtx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        fwCtx.fillRect(0, 0, fwCanvas.width, fwCanvas.height);
+        if(Math.random() < 0.04) fireworks.push(new Firework());
+        fireworks.forEach((fw, i) => {
+            fw.update(); fw.draw();
+            if(fw.exploded && fw.particles.length === 0) fireworks.splice(i, 1);
+        });
+        requestAnimationFrame(animate);
+    }
+
+    // Launch both
+    initSnake();
+    animate();
+  </script>
 </body>
 </html>
